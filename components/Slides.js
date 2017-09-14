@@ -1,15 +1,14 @@
+
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import Slides from '../components/Slides';
 
-class WelcomeScreen extends Component{
+class Slides extends Component {
   render() {
     return (
       <View>
-        <Slides />
       </View>
     );
   }
 }
 
-export default WelcomeScreen;
+export default Slides;
