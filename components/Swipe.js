@@ -101,7 +101,7 @@ class Swipe extends Component {
           <Animated.View
             key={item.id}
             style={[this.getCardStyle(), styles.cardStyle, { zIndex: 99 }]}
-            {...this.state.panResponder.panHandlers}
+            { ...this.state.panResponder.panHandlers }
           >
             {this.props.renderCard(item)}
           </Animated.View>

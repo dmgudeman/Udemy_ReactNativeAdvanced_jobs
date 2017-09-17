@@ -13,7 +13,6 @@ class DeckScreen extends Component {
         <View style={styles.detailWrapper}>
           <Text>{job.company}</Text>
           <Text>{job.formattedRelativeTime}</Text>
-          <Text></Text>
         </View>
         <Text>
           {job.snippet.replace(/<b>/g, '').replace(/<\/b>/g, '')}
@@ -35,7 +34,7 @@ class DeckScreen extends Component {
     return (
       <View>
         <Swipe
-          data={this.props.jobs || [] }
+          data={this.props.jobs}
           renderCard={this.renderCard}
           renderNoMoreCards={this.renderNoMoreCards}
         />
