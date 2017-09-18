@@ -26,6 +26,8 @@ class MapScreen extends Component{
   
   onButtonPress = () => {
     this.props.fetchJobs(this.state.region, () => {
+      console.log("BUTTON PRESSED");
+     
       this.props.navigation.navigate('deck');
     });
   }
@@ -67,4 +69,5 @@ const styles = {
     right: 0
   }
 }
+
 export default connect(null, actions)(MapScreen);
