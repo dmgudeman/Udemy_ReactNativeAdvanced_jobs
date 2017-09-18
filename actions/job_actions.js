@@ -31,6 +31,7 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
     const url = buildJobsUrl(zip);
     let  { data } = await axios.get(url);
     dispatch({ type: FETCH_JOBS, payload: data });
+    // callback allows for navigating to the deck screen
     callback();
   } catch(e){
     console.error(e);

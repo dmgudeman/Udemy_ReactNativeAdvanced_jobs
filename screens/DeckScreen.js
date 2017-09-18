@@ -49,7 +49,7 @@ class DeckScreen extends Component {
 // jobs is now used as the key for only the results property of the jobs object
 // returned.
 function mapStateToProps({ jobs }) {
-  return { jobs: jobs.result };
+  return { jobs: jobs.results };
 }
 
 const styles = {
