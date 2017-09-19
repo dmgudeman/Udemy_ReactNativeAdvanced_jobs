@@ -5,7 +5,8 @@ import {
   PanResponder,
   Dimensions,
   LayoutAnimation,
-  UIManager
+  UIManager,
+  Platform
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -15,7 +16,8 @@ const SWIPE_OUT_DURATION = 250;
 class Swipe extends Component {
   static defaultProps = {
     onSwipeRight: () => {},
-    onSwipeLeft: () => {}
+    onSwipeLeft: () => {},
+    keyProp: 'id'
   }
 
   constructor(props) {
@@ -89,17 +91,18 @@ class Swipe extends Component {
   }
 
   renderCards() {
-    if (this.state.index >= this.props.data.length) {
-      return this.props.renderNoMoreCards();
-    }
+    if (this.props.data) {
+      if ( this.state.index >= this.props.data.length ) {
+        return this.props.renderNoMoreCards();
+      }
 
-    return this.props.data.map((item, i) => {
+    const deck = this.props.data.map((item, i) => {
       if (i < this.state.index) { return null; }
 
       if (i === this.state.index) {
         return (
           <Animated.View
-            key={item.id}
+            key={item[this.props.keyProp]}
             style={[this.getCardStyle(), styles.cardStyle, { zIndex: 99 }]}
             { ...this.state.panResponder.panHandlers }
           >
@@ -110,13 +113,15 @@ class Swipe extends Component {
 
       return (
         <Animated.View
-          key={item.id}
+          key={item[this.props.keyProp]}
           style={[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: 5 }]}
         >
           {this.props.renderCard(item)}
         </Animated.View>
       );
-    }).reverse();
+    });
+    return Platform.OS === 'android' ? deck : deck.reverse();
+  }
   }
 
   render() {

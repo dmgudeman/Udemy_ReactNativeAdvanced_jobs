@@ -26,16 +26,29 @@ const buildJobsUrl = (zip) => {
   return `${JOB_ROOT_URL}${query}`;
 };
 
+<<<<<<< HEAD
+=======
 // action creator
+>>>>>>> mon
 export const fetchJobs = (region, callback) => async (dispatch) => {
   try {
     let zip = await reverseGeocode(region);
     const url = buildJobsUrl(zip);
+<<<<<<< HEAD
+    let { data } = await axios.get(url);
+=======
     let  { data } = await axios.get(url);
+>>>>>>> mon
     dispatch({ type: FETCH_JOBS, payload: data });
     // callback allows for navigating to the deck screen
     callback();
+<<<<<<< HEAD
   } catch(e) {
+    console.error(e);
+  }
+};
+=======
+  } catch(e){
     console.error(e);
   }
 };
@@ -51,3 +64,4 @@ export const clearLikedJobs = () => {
   return { type: CLEAR_LIKED_JOBS };
 };
 
+>>>>>>> mon

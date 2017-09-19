@@ -67,4 +67,5 @@ const styles = {
     right: 0
   }
 }
+
 export default connect(null, actions)(MapScreen);
