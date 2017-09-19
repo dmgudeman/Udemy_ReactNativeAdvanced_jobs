@@ -91,9 +91,10 @@ class Swipe extends Component {
   }
 
   renderCards() {
-    if ( this.state.index >= this.props.data.length ) {
-      return this.props.renderNoMoreCards();
-    }
+    if (this.props.data) {
+      if ( this.state.index >= this.props.data.length ) {
+        return this.props.renderNoMoreCards();
+      }
 
     const deck = this.props.data.map((item, i) => {
       if (i < this.state.index) { return null; }
@@ -120,6 +121,7 @@ class Swipe extends Component {
       );
     });
     return Platform.OS === 'android' ? deck : deck.reverse();
+  }
   }
 
   render() {
